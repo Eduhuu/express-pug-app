@@ -1,0 +1,13 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title=pageTitle
+        link(rel="stylesheet", href="/css/output.css")
+        link(rel="stylesheet", href="css/font-awesome-4.7.0/css/font-awesome.min.css")
+    body(class="relative h-screen flex flex-col items-center justify-center")
+        p(class="absolute bottom-2 right-2 border border-1 border-gray-300 bg-[#D9D9D9] rounded p-3" id="alert_message") #{alert_message}
+        block content
+        script(src="js/script.js")
+//- Lay out de auth

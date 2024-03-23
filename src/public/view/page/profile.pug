@@ -1,0 +1,41 @@
+extends ../layout/mainLayoutProfile.pug
+
+block content 
+    form(class="h-full w-full flex justify-center items-center" action="/profile" method="post" enctype="multipart/form-data")
+        div(class="p-8 flex flex-col w-[35%] border border-1 border-[#D9D9D9] rounded shadow bg-[#D9D9D9] gap-4")
+            div(class="flex justify-between")   
+                div(class="flex gap-4")
+                    a(href="/")
+                        i(class="fa fa-chevron-left" aria-hidden="true")
+                    h1 Perfil 
+                if can_edit 
+                    a(href="/confirm-password-profile") Cambiar contrasena  
+            div(class="flex flex-col self-center items-center gap-2")
+                label Foto de perfil
+                - const imgURL = "/" + img
+                input(type="file" id="profile-input-input" name="profile-input-input" accept="image/*" class="border rounded-md p-2 bg-white hidden")
+                img(class="rounded-full w-32 h-32" src=imgURL name="" id="profile-img-input")
+            div(class="grid grid-cols-2 gap-4")
+                div(class="col-span-1 flex flex-col gap-2") 
+                    label(for="") Nombre
+                    if can_edit 
+                        input(class="px-3 py-2 border border-1 border-gray-500 rounded" value=name type="text", name="name", placeholder="Nombre de usuario") 
+                    else 
+                        p(class="px-3 py-2 border border-1 border-gray-500 rounded")=name
+                div(class="col-span-1 flex flex-col gap-2") 
+                    label(for="") Apellido
+                    if can_edit 
+                        input(class="px-3 py-2 border border-1 border-gray-500 rounded" value=lastname type="text", name="lastname", placeholder="Nombre de usuario") 
+                    else 
+                        p(class="px-3 py-2 border border-1 border-gray-500 rounded")=lastname
+                div(class="col-span-2 flex flex-col gap-2") 
+                    label(for="") Correo
+                    if can_edit 
+                        input(class="px-3 py-2 border border-1 border-gray-500 rounded"  value=email type="text", name="email", placeholder="Correo")
+                    else 
+                        p(class="px-3 py-2 border border-1 border-gray-500 rounded")=email
+            if can_edit 
+                button(class="flex self-end px-4 py-2 border border-1 border-black rounded") Editar
+                //- h1 Vista perfil
+                //- p=name
+                //- img(src=img)

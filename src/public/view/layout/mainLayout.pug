@@ -1,0 +1,30 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title=pageTitle
+        link(rel="stylesheet", href="/css/output.css")
+        link(rel="stylesheet", href="css/font-awesome-4.7.0/css/font-awesome.min.css")
+    body(class="h-screen")
+        if alert_message
+            p(class="absolute bottom-2 right-2 border border-1 border-gray-300 bg-[#D9D9D9] rounded p-3" id="alert_message") #{alert_message}
+        header(class="h-[5%] px-8 py-2 bg-gray-200")
+            nav(class="h-full")
+                div(class="h-full flex justify-between items-center")
+                    div 
+                        a(href="/")
+                            p(class="flex items-center border border-1 border-gray-500 py-2 px-4 rounded") Logo
+                    div(class="flex gap-4 items-center")
+                        a(href="/profile")
+                            i(class="fa fa-user cursor-pointer text-xl" aria-hidden="true") 
+                        if is_admin
+                            a(href="/admin")
+                                i(class="fa fa-sliders cursor-pointer text-xl" aria-hidden="true")
+                        i(class="fa fa-sign-out cursor-pointer text-xl" aria-hidden="true" id="logout-button")
+        main(class="min-h-[90%] px-8 py-4")
+            block content
+        //- footer(class="h-[5%]")
+        //-     p Soy Footer
+        script(src="js/script.js")
+//- Lay out de app

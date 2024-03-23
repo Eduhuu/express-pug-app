@@ -1,0 +1,43 @@
+extends ../layout/mainLayoutProfile.pug
+block content
+    div(class="flex justify-center gap-8")
+        div(class="flex flex-col gap-4 px-8 py-4 rounded")
+            - const userRef = `/profile/${publication.autor_id}`
+            div(class="flex justify-between items-center")
+                a(class="flex justify-start gap-2" href=userRef)
+                    img(src="/"+publication.user.img class="w-7 h-7 rounded-full")
+                    div(class="flex gap-1")
+                        p=publication.user.name
+                        p=publication.user.lastname
+                if user_id == publication.autor_id
+                    div(class="flex items-center gap-2")
+                        a(href=`/edit-publication/${publication_id}/`, target="_blank")
+                            i(class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true")
+                        div(class="delete-publication" value=publication_id)
+                            i(class="fa fa-trash cursor-pointer" aria-hidden="true")
+            img(src="/"+publication.image class="max-w-[25vw] rounded")
+            div(class="flex flex-col gap-0")
+                p(class="max-w-[25vw]")=publication.title 
+                small(class="max-w-[25vw] font-")=publication.content 
+
+        div(class="flex flex-col gap-2 bg-gray-100 rounded w-[30%] px-4 py-2")
+            each comment in publication.comments
+                small(class="w-full flex gap-2 bg-gray-200 px-2 py-1 rounded items-center")
+                    div
+                        img(src="/"+comment.user.img class="w-7 h-7 rounded-full")
+                    div(class="flex flex-col w-full")
+                        div(class="flex justify-between items-center")
+                            p=`${src=comment.user.name} ${src=comment.user.lastname}`
+                            if user_id == comment.autor_id
+                                div(class="flex gap-2")
+                                    i(class="fa fa-pencil-square-o cursor-pointer" aria-hidden="true")
+                                    div(class="delete-comment flex items-start" value=comment.id)
+                                        i(class="fa fa fa-trash cursor-pointer" aria-hidden="true") 
+                        div
+                            p=comment.content
+            <hr class="rounded">
+            - const url = `/comment/${publication_id}`
+            form(action=url, method="post" )
+                small(class="flex gap-1")
+                    input(class="px-3 py-2 bg-transparent rounded w-full" type="text" name="comment" placeholder="Anade comentario...")
+                    button(class=" px-4 py-2 border border-1 border-gray-300 rounded" type="submit") Comentar

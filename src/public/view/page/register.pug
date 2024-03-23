@@ -1,0 +1,30 @@
+extends ../layout/layout.pug
+block content
+  div(class="flex flex-col gap-4 items-center bg-[#D9D9D9] pt-6 pb-8 px-6 rounded shadow-md")
+    div(class="w-[100%] flex gap-2 justify-start items-center")
+      a(href="/login") 
+        i(class="fa fa-chevron-left" aria-hidden="true")
+      h1.text-2xl.font-bold.text-gray-800 Registrarse
+    form(class="flex flex-col gap-2" action="/register" method="post" enctype="multipart/form-data")
+      div(class="grid grid-cols-2 gap-2")
+        div(class="flex flex-col gap-2 col-span-2")
+          label(for="avatar-input-register") Foto de perfil
+          div(class="flex justify-center")
+            input(type="file" id="avatar-input-register" name="avatar-input-register" accept="image/*" class="border rounded-md p-2 bg-white hidden")
+            img(id="avatar-register-img" class="cursor-pointer border border-1 border-gray-500 rounded-full" src="../../img/user-default.jpg" width=100 height=100)
+        div(class="flex flex-col gap-2")
+          label(for="name") Nombre
+          input(placeholder="Nombre de usuario" type="text" id="name" name="name" class="border rounded-md p-2")
+        div(class="flex flex-col gap-2")
+          label(for="lastname") Apellido
+          input(placeholder="Nombre de usuario" type="text" id="lastname" name="lastname" class="border rounded-md p-2")
+        div(class="flex flex-col gap-2 col-span-2")
+          label(for="email") Correo electrónico
+          input(placeholder="Correo Electronico" type="email" id="email" name="email" class="border rounded-md p-2")
+        div(class="flex flex-col gap-2")
+          label(for="password") Contraseña
+          input(placeholder="Contraseña" type="password" id="password" name="password" class="border rounded-md p-2")
+        div(class="flex flex-col gap-2")
+          label(for="confirm_password") Confirmar contraseña
+          input(placeholder="Confirmar contraseña" type="password" id="confirm_password" name="confirm_password" class="border rounded-md p-2")
+      button(class="self-end py-1 px-3 border border-1 border-gray-700 rounded" type="submit") Registrar

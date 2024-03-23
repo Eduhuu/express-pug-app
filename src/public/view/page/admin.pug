@@ -1,0 +1,81 @@
+extends ../layout/mainLayout.pug
+
+block content 
+    div(class="m-4 min-h-[90vh] bg-gray-200 rounded grid grid-cols-4 px-14 py-10")
+        div(class="flex gap-2") 
+            strong Cantidad de usuarios:
+            p=user_count 
+        div(class="flex gap-2") 
+            strong Cantidad de publicaciones:
+            p=publication_count 
+        div(class="flex gap-2") 
+            strong Cantidad de comentarios:
+            p=commnets_count
+        div(class="flex gap-2") 
+            strong Usuario con mayor cantidad de publicaciones:
+            p=max_pub_user_count.name + " " + max_pub_user_count.cant_publication
+        div(class="flex gap-2") 
+            strong Usuario con mayor cantidad de comentarios:
+            p=max_commnet_user_count.name + " " + max_commnet_user_count.cant_comments
+        div(class="col-span-4 flex flex-col gap-4")
+            strong Usuarios registrados en la aplicacion 
+            table(class="bg-white shadow")
+                thead
+                    tr(class="border border-1 border-gray-500 rounded text-center")
+                        td(class="py-2") Nombre de usuario
+                        td(class="py-2") Apellido de usuario 
+                        td(class="py-2") Correo electronico   
+                        td(class="py-2") Acciones 
+                tbody 
+                    each user in users
+                        tr(class="text-center")
+                            td(class="py-2")=user.name 
+                            td(class="py-2")=user.lastname 
+                            td(class="py-2")=user.email
+                            td(class="py-2") 
+                                div(class="flex gap-2 justify-center")
+                                    div(class="flex gap-1 items-center delete-user" value=user.id)
+                                        p borrar 
+                                        i(class="fa fa-trash" aria-hidden="true")
+                                    div(class="flex gap-1 items-center block-user" value=user.id)
+                                        if user.blocked
+                                            p desbloquear 
+                                            i(class="fa fa-check" aria-hidden="true")
+                                        else
+                                            p bloquear
+                                            i(class="fa fa-ban" aria-hidden="true")
+                                    a(class="flex gap-1 items-center edit-user" value=user.id href=`/profile/${user.id}`) 
+                                        p editar
+                                        i(class="fa fa-pencil-square" aria-hidden="true")
+        div(class="col-span-4 flex flex-col gap-4")
+            p Publicaciones cagadas en la aplicacion 
+            table(class="bg-white shadow")
+                thead
+                    tr(class="border border-1 border-gray-500 rounded text-center") 
+                        td(class="py-2") Titulo publicacion
+                        td(class="py-2") Contenido
+                        td(class="py-2") Cantidad comentarios
+                        td(class="py-2") Acciones 
+                tbody 
+                    each publication in publications
+                        tr(class="text-center")
+                            td(class="py-2")=publication.title 
+                            td(class="py-2")=publication.content 
+                            td(class="py-2")=publication.comments.count
+                            td(class="py-2") 
+                                div(class="flex gap-2 justify-center")
+                                    div(class="flex gap-1 items-center delete-publication" value=publication.id)
+                                        p borrar 
+                                        i(class="fa fa-trash" aria-hidden="true")
+                                    div(class="flex gap-1 items-center block-publication" value=publication.id)
+                                        if publication.blocked
+                                            p desbloquear 
+                                            i(class="fa fa-check" aria-hidden="true")
+                                        else
+                                            p bloquear
+                                            i(class="fa fa-ban" aria-hidden="true")
+                                    a(class="flex gap-1 items-center edit-publication" href=`/edit-publication/${publication.id}/`)
+                                        p editar
+                                        i(class="fa fa-pencil-square" aria-hidden="true")
+
+

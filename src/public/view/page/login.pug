@@ -1,0 +1,20 @@
+extends ../layout/layout
+
+block content
+  div(class="min-w-[20vw] max-w-[25vw] flex flex-col gap-4 items-center bg-[#D9D9D9] pt-6 pb-8 px-6 rounded shadow-md")
+    big(class="w-full") 
+      h1 Iniciar sesión
+    form(class="w-full flex flex-col gap-2" action="/login" method="post")
+      div(class="flex flex-col gap-2")
+        label(for="email") Correo electronico
+        input(class="border border-1 border-gray-200 rounded px-2 py-1 bg-white" type="text" name="email" placeholder="Correo electronico")
+      div(class="flex flex-col gap-2")
+        label(for="email") Contraseña
+        input(class="border border-1 border-gray-200 rounded px-2 py-1 bg-white"  type="password" name="password" placeholder="Contraseña")
+      div(class="flex flex-col gap-1")
+        small(class="flex justify-end") 
+          a(href='/restore-password') Recuperar contraseña.
+        small(class="flex justify-end") 
+          a(href='/register') Si no posee cuenta. Registrese.
+      button(class="py-1 border border-1 border-gray-700 rounded" type="submit") Iniciar sesión
+    
