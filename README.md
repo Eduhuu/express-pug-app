@@ -29,11 +29,14 @@ Si no esta corriendo reinicie postgres con:
     sudo service postgresql restart
 
 ### El proyecto utiliza una base de datos con las siguientes caracteristicas:
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'postgres',
-    port: 5432,
+```
+user: 'postgres',
+host: 'localhost',
+database: 'postgres',
+password: 'postgres',
+port: 5432
+```
+
 Por lo que debemos cambiar las credenciades del usuarios postgres
 
 - Utilizamos el usuario 'postgres' con el comando en la terminal:
