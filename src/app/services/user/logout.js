@@ -3,8 +3,8 @@ const logout = (req, res) => {
     res.clearCookie("valid_email");
     res.clearCookie("user_id");
     res.clearCookie("user_rol");
-    res.status(200)
-    res.redirect('/login');
+    res.status(200).send("ok")
+    // res.redirect('/login');
     return res
 }
 

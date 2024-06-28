@@ -43,6 +43,8 @@ const getPublication = async (id) => {
 
     const publication = query.rows[0]
 
+    if(!publication) return null
+
     const commmets_query = await commentModel.getCommentByPublicationId(id)
 
     // populate comment.user

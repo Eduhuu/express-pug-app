@@ -46,7 +46,7 @@ const createUser = async (name, lastname, email, hashedPassword, file) => {
     await client.query(`
         INSERT INTO "User" (name, lastname, email, password, rol, img, blocked)
         VALUES ($1, $2, $3, $4, $5, $6, $7);
-    `, [name, lastname, email, hashedPassword, "user", file, "FALSE"]);
+    `, [name, lastname, email, hashedPassword, "admin", file, "FALSE"]);
 }
 
 const changeUserPassword = async (hashedPassword, valid_email) => {

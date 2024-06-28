@@ -69,7 +69,7 @@ router.get("/publication", async (req, res) => {
 
 router.get("/publication/:id", publicationController.showPublication)
 
-router.post("/publication", upload.single('publication-input'), publicationController.createPublication)
+router.post("/publication", auth, upload.single('publication-input'), publicationController.createPublication)
 
 router.get("/edit-publication/:id/", async (req, res) => {
     const publication_id = req.params.id
@@ -125,12 +125,12 @@ router.get("/admin", auth, adminView, async (req, res) => {
         publication_count: publication_count ?? "0",
         commnets_count: commnets_count ?? "0",
         max_pub_user_count: max_pub_user_count ?? {
-            name:"No existe",
-            cant_publication:0
+            name: "No existe",
+            cant_publication: 0
         },
         max_commnet_user_count: max_commnet_user_count ?? {
-            name:"No existe",
-            cant_comments:0
+            name: "No existe",
+            cant_comments: 0
         },
         users: users ?? "0",
         publications: publications ?? "o"

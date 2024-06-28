@@ -5,6 +5,7 @@ const showPublication = async (req, res) => {
     const publication_id = req.params.id
     const user_id = req.cookies.user_id
     const publication = await publicationModel.getPublication(publication_id)
+    if (!publication) return res.status(404).redirect("/")
     return res.status(200).render("page/detail-publication", { publication: publication, publication_id, user_id, is_admin: req.cookies.user_rol })
 }
 

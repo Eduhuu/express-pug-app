@@ -1,6 +1,6 @@
 const publicationModel = require("../../models/publication")
 
-const PAGE_SIZE = 5
+const PAGE_SIZE = 10
 
 const listPublications = async (req, res) => {
     const current_page = parseInt(req.query.page ?? "1")
