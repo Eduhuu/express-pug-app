@@ -37,18 +37,25 @@ Si no esta corriendo reinicie postgres con:
 Por lo que debemos cambiar las credenciades del usuarios postgres
 
 - Utilizamos el usuario 'postgres' con el comando en la terminal:
-    `sudo -i -u postgres`
+
+        sudo -i -u postgres
 
 - Ejecutamos postgres con el comando:
-    `psql`
+
+        psql
 
 - Para cambiar la contrasena utilizamos:
-    `ALTER USER postgres WITH PASSWORD 'postgres';`
+    
+        ALTER USER postgres WITH PASSWORD 'postgres';
 
-- Nos salimos de la base de datos con: `exit`
+- Nos salimos de la base de datos con: 
+    
+        exit
 
 - Por ultimo queda crear las migraciones, estas se encuentra ubicadas en src/app/db/migrations.js. Las cuales son un archivo .js que crea todas las tablas de la base de datos. Para ejecutarlas utilizamos:
-    `npm run migrate`. Como adicional tambien se puede reiniciar la base de datos con el comando: `npm run clear_db`. Ambos comandos se encuentran definidos en el `package.json`
+        
+        npm run migrate
+    Como adicional tambien se puede reiniciar la base de datos con el comando: `npm run clear_db`. Ambos comandos se encuentran definidos en el `package.json`
 
 ### Ejecutamos el proyecto con:
     
