@@ -1,3 +1,5 @@
+Proyecto desarrollado con Node, Express js y postgres
+
 - Instalamos node con:
 
 sudo apt install nodejs
