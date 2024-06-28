@@ -1,4 +1,4 @@
-Proyecto desarrollado con Node, Express js y postgres
+Proyecto desarrollado con Node, Express js y postgres. Seguir los siguientes pasos para instalar correctamente el proyecto:
 
 - Instalamos node con:
 
