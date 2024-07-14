@@ -59,11 +59,12 @@ router.post("/confirm-password", userController.confirmPassword)
 router.post("/logout", userController.logout)
 
 // Index
-router.get("/", auth, publicationController.listPublications)
+// router.get("/", auth, publicationController.listPublications)
+router.get("/", publicationController.listPublications)
 
 
 //Publication
-router.get("/publication", async (req, res) => {
+router.get("/publication",auth, async (req, res) => {
     res.render("page/publication")
 })
 
@@ -89,8 +90,8 @@ router.post("/edit-publication/:id/", upload.single('publication-input'), public
 router.delete("/publication/:id", publicationController.deletePublication)
 
 // Comentarios
-router.post("/comment/:id", commentsController.createComment)
-router.delete("/comment/:id", commentsController.deleteComment)
+router.post("/comment/:id",auth, commentsController.createComment)
+router.delete("/comment/:id",auth, commentsController.deleteComment)
 
 
 // Profile
