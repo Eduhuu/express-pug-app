@@ -1,5 +1,4 @@
 // MIDDLEWARES
-
 const auth = require("../middleware/auth")
 const adminView = require("../middleware/adminView")
 const { upload } = require("../middleware/multer")
@@ -9,7 +8,6 @@ const router = require("express").Router()
 
 
 // CONTROLLER
-
 const userController = require("../controllers/auth")
 const publicationController = require("../controllers/publication")
 const commentsController = require("../controllers/comments")
@@ -39,6 +37,7 @@ router.get("/restore-password", (req, res) => {
 router.post("/restore-password", userController.restorePassword)
 
 // Create new password 
+// AQUI
 router.get("/confirm-password", (req, res) => {
 
     if (!req.query || !req.query.code) {
@@ -72,6 +71,7 @@ router.get("/publication/:id", publicationController.showPublication)
 
 router.post("/publication", auth, upload.single('publication-input'), publicationController.createPublication)
 
+// AQUI
 router.get("/edit-publication/:id/", async (req, res) => {
     const publication_id = req.params.id
     const user_id = req.cookies.user_id
@@ -95,6 +95,7 @@ router.delete("/comment/:id",auth, commentsController.deleteComment)
 
 
 // Profile
+// AQUI
 router.get("/profile", auth, async (req, res) => {
     let user_info = {}
     if (req.cookies.user_id) {
@@ -102,7 +103,7 @@ router.get("/profile", auth, async (req, res) => {
     }
     res.status(200).render("page/profile", { ...user_info, can_edit: true })
 })
-
+// AQUI
 router.get("/profile/:id", auth, async (req, res) => {
     const user_info = await userModel.getUserInfo(req.params.id)
     const is_admin = req.cookies.user_rol
@@ -111,6 +112,7 @@ router.get("/profile/:id", auth, async (req, res) => {
 router.post("/profile", auth, upload.single('profile-input-input'), userController.updateUser)
 
 // Admin
+// AQUI
 router.get("/admin", auth, adminView, async (req, res) => {
 
     const user_count = await commentModel.getUserCount()

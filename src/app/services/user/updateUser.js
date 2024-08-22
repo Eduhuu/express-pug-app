@@ -20,11 +20,9 @@ const updateUser = async (req, res) => {
 
     const update_img = req.img_register ?? current_user.img
 
-
-    await updateUser(name, lastname, email, user_id, update_img)
+    await userModel.updateUser(name, lastname, email, user_id, update_img)
 
     return res.status(200).render("page/profile", { name, lastname, email, img: update_img, alert_message: "Se actualizo el perfil exitosamente.", can_edit: true, })
-
 
 }
 

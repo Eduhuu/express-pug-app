@@ -7,6 +7,9 @@ const createPublication = async (req, res) => {
     if (!content || !file || !title) {
         return res.status(400).render("page/publication", { alert_message: "Todos los campos son obligatorios." })
     }
+    if (title.length > 255) {
+        return res.status(400).render("page/publication", { alert_message: "El contenido del titulo es muy largo." })
+    }
 
     await publicationModel.createPublication(file, content, user_id, title)
 

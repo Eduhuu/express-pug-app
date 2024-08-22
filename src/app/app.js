@@ -1,4 +1,5 @@
 require('dotenv').config()
+const helmet = require('helmet');
 const express = require("express")
 const morgan = require("morgan")
 const cookieParser = require("cookie-parser");
@@ -17,6 +18,18 @@ app.set("port", process.env.PORT || 3000)
 app.set("views", "./src/public/view")
 // declarate view engine as pug
 app.set("view engine", "pug")
+
+// use helmet middleware for security
+app.use(
+    helmet({
+      contentSecurityPolicy: {
+        directives: {
+          "script-src": ["'self'", "example.com"],
+          "img-src": ["'self'", "https: data: blob:"],
+        },
+      },
+    })
+  );
 
 // Middlewares
 app.use(express.json())
