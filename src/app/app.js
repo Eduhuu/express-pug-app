@@ -15,7 +15,7 @@ app.set("port", process.env.PORT || 3000)
 
 // setting views variables
 // add path to templates
-app.set("views", "./src/public/view")
+app.set("views", "./src/public/view") 
 // declarate view engine as pug
 app.set("view engine", "pug")
 
